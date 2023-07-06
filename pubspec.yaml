@@ -1,0 +1,22 @@
+name: event_frog_logger
+description: A starting point for Dart libraries or applications.
+version: 0.1.0
+repository: https://github.com/VHCBlade/event_frog_logger
+
+environment:
+  sdk: '>=2.19.6 <4.0.0'
+
+dependencies:
+  dart_frog: ^0.3.0
+
+  event_db: ^0.1.16
+  intl: ^0.17.0
+
+  tuple: ^2.0.0
+
+dev_dependencies:
+  event_db_tester: ^0.1.0
+
+  lints: ^2.0.0
+  test: ^1.21.0
+  very_good_analysis: ^5.0.0
