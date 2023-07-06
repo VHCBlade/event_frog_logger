@@ -1,5 +1,5 @@
 name: event_frog_logger
-description: A starting point for Dart libraries or applications.
+description: Provides logger utilities to be used with event_db and event_frog
 version: 0.1.0
 repository: https://github.com/VHCBlade/event_frog_logger
 
