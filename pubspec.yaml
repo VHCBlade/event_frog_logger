@@ -1,6 +1,6 @@
 name: event_frog_logger
 description: Provides logger utilities to be used with event_db and event_frog
-version: 0.1.0
+version: 0.2.0
 repository: https://github.com/VHCBlade/event_frog_logger
 
 environment:
@@ -10,7 +10,7 @@ dependencies:
   dart_frog: ^0.3.0
 
   event_db: ^0.1.16
-  intl: ^0.17.0
+  intl: ^0.18.0
 
   tuple: ^2.0.0
 
