@@ -3,7 +3,13 @@ import 'package:event_db/event_db.dart';
 import 'package:event_frog_logger/event_frog_logger.dart';
 import 'package:intl/intl.dart';
 
+/// Determines how to load the database from the loader
+typedef DatabaseLoader = DatabaseRepository Function(dart_frog.RequestContext);
+
 final _monthFormatter = DateFormat('yyyy-MM');
+
+DatabaseRepository _defaultLoadDatabase(dart_frog.RequestContext context) =>
+    context.read<DatabaseRepository>();
 
 /// Provides a [dart_frog.requestLogger] [dart_frog.Middleware] that
 /// automatically logs the access logs to the appropriate database based on the
@@ -16,6 +22,7 @@ class AccessLogger {
   const AccessLogger({
     this.accessLogDBBase = _defaultAccessLogDBBase,
     this.accessLogType = _defaultAccessLogType,
+    this.loader = _defaultLoadDatabase,
   });
 
   static const _defaultAccessLogDBBase = 'Logs';
@@ -26,6 +33,8 @@ class AccessLogger {
 
   /// Determines the [LogModel.logType] used for the access logs
   final String accessLogType;
+
+  final DatabaseLoader loader;
 
   /// Creates the database name for new access logs made right now
   String get logDBNow => logDBForDateTime(DateTime.now());
@@ -40,14 +49,13 @@ class AccessLogger {
   /// the result of [logDBNow] with a [LogModel.type] of [accessLogType]
   dart_frog.Middleware get requestLogger => (dart_frog.Handler handler) =>
       (dart_frog.RequestContext context) => dart_frog.requestLogger(
-            logger: (log, isError) async =>
-                await context.read<DatabaseRepository>().saveModel(
-                      logDBNow,
-                      LogModel.fromLog(
-                        log: log,
-                        isError: isError,
-                        logType: accessLogType,
-                      ),
-                    ),
+            logger: (log, isError) async => await loader(context).saveModel(
+              logDBNow,
+              LogModel.fromLog(
+                log: log,
+                isError: isError,
+                logType: accessLogType,
+              ),
+            ),
           )(handler)(context);
 }

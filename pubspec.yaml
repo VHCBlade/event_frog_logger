@@ -1,6 +1,6 @@
 name: event_frog_logger
 description: Provides logger utilities to be used with event_db and event_frog
-version: 0.2.1
+version: 0.2.2
 repository: https://github.com/VHCBlade/event_frog_logger
 
 environment:
