@@ -1,3 +1,7 @@
+## 0.2.3
+
+- Changed event_db and event_db_tester to accept the new 0.2.0 version as well.
+
 ## 0.2.2
 
 - Updated AccessLogger to have the ability to define a DatabaseLoader which can be used to change how the DatabaseRepository is loaded from the RequestContext
