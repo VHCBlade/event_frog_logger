@@ -34,6 +34,10 @@ class AccessLogger {
   /// Determines the [LogModel.logType] used for the access logs
   final String accessLogType;
 
+  /// Determines how to load the [DatabaseRepository] from the
+  /// [dart_frog.RequestContext]
+  ///
+  /// By default, this will use [_defaultLoadDatabase]
   final DatabaseLoader loader;
 
   /// Creates the database name for new access logs made right now
