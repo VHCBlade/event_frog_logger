@@ -9,13 +9,13 @@ environment:
 dependencies:
   dart_frog: '>=0.3.0 <2.0.0'
 
-  event_db: ^0.1.16
+  event_db: '>=0.1.0 <0.3.0'
   intl: ^0.18.0
 
   tuple: ^2.0.0
 
 dev_dependencies:
-  event_db_tester: ^0.1.0
+  event_db_tester: '>=0.1.0 <0.3.0'
 
   lints: ^2.0.0
   test: ^1.21.0
